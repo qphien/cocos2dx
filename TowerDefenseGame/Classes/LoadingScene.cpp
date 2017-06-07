@@ -8,6 +8,7 @@
 
 #include "LoadingScene.hpp"
 #include "SimpleAudioEngine.h"
+#include "StartScene.hpp"
 
 using namespace CocosDenshion;
 LoadingScene::LoadingScene(): progressTimer(NULL), numberOfLoadingResouce(0),
@@ -109,14 +110,16 @@ void LoadingScene::loadingCallBack(cocos2d::Texture2D *texture)
     float percentage = static_cast<float>(numberOfLoadingResouce) / totalResources * 100;
     //log("percentage: %f", percentage);
     progressTimer->setPercentage(percentage);
-//    if(numberOfLoadingResouce == totalResources)
-//    {
-//        //Transit into home scene
-//        transitionScene();
-//    }
+    if(numberOfLoadingResouce == totalResources)
+    {
+        //Transit into home scene
+        transitionScene();
+    }
 }
 
 void LoadingScene::transitionScene()
 {
-    
+    auto startScene = StartScene::createScene();
+    auto transitionFade = TransitionFade::create(0.1f, startScene);
+    Director::getInstance()->replaceScene(transitionFade);
 }
