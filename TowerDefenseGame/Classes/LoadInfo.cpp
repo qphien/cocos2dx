@@ -63,5 +63,4 @@ void LoadInfo::readInfo()
                                                     , type3Num, type3Hp);
         gameManager->addEnemyBunch(enemyInfo);
     }
-    
 }

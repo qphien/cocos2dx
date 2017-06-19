@@ -1,31 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="16" height="9" tilewidth="96" tileheight="96">
- <tileset firstgid="1" name="tiles" tilewidth="96" tileheight="96">
-  <image source="tiles.png" trans="ff00ff" width="768" height="576"/>
-  <tile id="23">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="96" tileheight="96" nextobjectid="9">
+ <tileset firstgid="1" name="tiles" tilewidth="96" tileheight="96" tilecount="48" columns="8">
+  <image source="tiles.png" width="768" height="576"/>
+  <tile id="0">
    <properties>
-    <property name="canTouch" value="1"/>
+    <property name="canTouch" type="int" value="0"/>
    </properties>
   </tile>
-  <tile id="38">
+  <tile id="1">
    <properties>
-    <property name="" value=""/>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="canTouch" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="42">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="43">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="canTouch" type="int" value="0"/>
    </properties>
   </tile>
  </tileset>
  <layer name="bg" width="16" height="9">
   <data encoding="base64" compression="zlib">
-   eJxTYGBgUCATswGxBA6sDMQqQKyKRw06ZgRiJihbG4h1gFgXyhdHwrj0cwIxFxJfHI3NRkA/TE4RiJXQ7BRHUsMMxCx49GsCsRYWeWGoGm4g5sGhnxhMTFjiciOxGJcb0TEACwgNgA==
+   eJyTYGBgkKAiVgZiFSBWxaOGGYhZkPiMQMwEZWsDsQgQ6yLJiyBhEJ8biHmQ5DmBmAtNvQQWPro4NjXo9sGwNAn6YVieCDX47MSGiY0H9DAmFaOHMS4MAHfGDKE=
   </data>
  </layer>
- <objectgroup name="obj" width="16" height="9">
-  <object name="0" x="715" y="233"/>
-  <object name="1" x="742" y="400"/>
-  <object name="2" x="985" y="394"/>
-  <object name="3" x="1018" y="218"/>
-  <object name="4" x="1218" y="215"/>
-  <object name="5" x="1185" y="585"/>
-  <object name="6" x="327" y="594"/>
-  <object name="7" x="358" y="330"/>
+ <objectgroup name="obj">
+  <object id="1" name="0" x="512" y="216"/>
+  <object id="2" name="1" x="552" y="408"/>
+  <object id="3" name="2" x="932" y="408"/>
+  <object id="4" name="3" x="932" y="212"/>
+  <object id="5" name="4" x="1120" y="220"/>
+  <object id="6" name="5" x="1084" y="604"/>
+  <object id="7" name="6" x="264" y="604"/>
+  <object id="8" name="7" x="264" y="328"/>
  </objectgroup>
 </map>

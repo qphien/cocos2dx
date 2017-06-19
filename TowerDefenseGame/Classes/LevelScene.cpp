@@ -68,7 +68,7 @@ bool LevelScene::init()
 
 void LevelScene::menuBackCallBack(cocos2d::Ref *pSender)
 {
-    log("in menuBackCallBack");
+    //log("in menuBackCallBack");
     transitionScene();
 }
 

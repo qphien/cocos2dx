@@ -35,7 +35,7 @@ void LevelLayer::addPage(cocos2d::Node *page)
         page->setContentSize(winSize);
         page->setAnchorPoint(Vec2(0, 0));
         page->setPosition(totalPages * winSize.width, 0);
-        log("page pos: %f, %f", page->getPositionX(), page->getPositionY());
+       // log("page pos: %f, %f", page->getPositionX(), page->getPositionY());
         ++totalPages;
         this->addChild(page);
     }
@@ -53,7 +53,7 @@ void LevelLayer::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
 {
     auto movedPos = touch->getLocation();
     auto distance = movedPos.x - touchBeganPos.x;
-    log("in onTouchMoved, distance: %f", distance);
+    //log("in onTouchMoved, distance: %f", distance);
     this->setPosition(Vec2(curPos.x + distance, curPos.y));
 }
 

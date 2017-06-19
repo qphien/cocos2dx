@@ -49,18 +49,22 @@ bool LevelSelected::initLevelSelected(const char *fileName, int number)
     
     //Add Items
     Vector<MenuItem*> menuItemVec;
-    for(int i = 0; i != COL; ++i)
+    
+    for(int i = 0; i != ROW; ++i)
     {
-        for(int j = 0; j != ROW; ++j)
+        for(int j = 0; j != COL; ++j)
         {
-            auto posX = startPosX + i * (itemContentSize.width + gap);
-            auto posY = startPosY - j * (itemContentSize.height + gap);
+            auto posX = startPosX + j * (itemContentSize.width + gap);
+            auto posY = startPosY - i * (itemContentSize.height + gap);
             auto menuItem = MenuItemImage::create("card_1.png", "card_2.png", "card_3.png", CC_CALLBACK_1(LevelSelected::menuCallBack, this));
             menuItem->setAnchorPoint(Vec2(0, 1));
             menuItem->setPosition(posX, posY);
             menuItem->setTag(i * COL + j + ROW * COL * number);
+            
+            //max opened level number
+            //最大解锁关卡数
             auto levelNum = UserDefault::getInstance()->getIntegerForKey("levelNum");
-            log("levelNum: %d", levelNum);
+            //log("levelNum: %d", levelNum);
             if(levelNum - ROW * COL * number < i * COL + j)
             {
                 menuItem->setEnabled(false);
@@ -83,6 +87,9 @@ void LevelSelected::menuCallBack(cocos2d::Ref *pSender)
     char buf[20] = {0};
     snprintf(buf, 20, "levelInfo_%d.plist", button->getTag());
     UserDefault::getInstance()->setStringForKey("levelFile", buf);
+    
+    //level choosed
+    UserDefault::getInstance()->setIntegerForKey("choosedLevel", button->getTag());
     
     //replace to LevelInfoScene
     auto scene = LevelInfoScene::createScene();

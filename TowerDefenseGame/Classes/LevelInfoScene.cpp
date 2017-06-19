@@ -10,6 +10,7 @@
 #include "SimpleAudioEngine.h"
 #include "LevelScene.hpp"
 #include "LoadInfo.hpp"
+#include "PlayScene.hpp"
 
 using namespace CocosDenshion;
 
@@ -36,18 +37,25 @@ bool LevelInfoScene::init()
     background->setPosition(winSize / 2);
     this->addChild(background, -1);
     
+    //Get star number
+    auto levelFile = UserDefault::getInstance()->getStringForKey("levelFile");
+    auto starNumber = UserDefault::getInstance()->getIntegerForKey(levelFile.c_str());
+    log("starNumber: %d", starNumber);
+    
     //Add Star
     auto starbgWidth = Sprite::createWithSpriteFrameName("starbg.png")->getContentSize().width;
-    log("starbgSize: %f", starbgWidth);
+    //log("starbgSize: %f", starbgWidth);
     auto startPosX = (winSize.width - STAR_NUMBER * starbgWidth) / 2;
     for(int i = 0; i != STAR_NUMBER; ++i)
     {
-        auto star = Sprite::createWithSpriteFrameName("star.png");
+        auto star = Sprite::createWithSpriteFrameName("starbg.png");
         star->setPosition(startPosX + i * starbgWidth, winSize.height * 2 /3);
         star->setAnchorPoint(Vec2(0, 0.5));
         this->addChild(star);
-        
-        auto starbg = Sprite::createWithSpriteFrameName("starbg.png");
+    }
+    for(int i = 0; i != starNumber; ++i)
+    {
+        auto starbg = Sprite::createWithSpriteFrameName("star.png");
         starbg->setPosition(startPosX + i * starbgWidth, winSize.height * 2 / 3);
         starbg->setAnchorPoint(Vec2(0, 0.5));
         this->addChild(starbg);
@@ -66,10 +74,7 @@ bool LevelInfoScene::init()
     auto menu = Menu::create(btnStartItem, btnBackItem, NULL);
     menu->alignItemsHorizontally();
     menu->setPosition(winSize.width / 2, winSize.height / 6);
-//    log("btnStartSp pos: %f, %f", btnStartItem->getPosition().x, btnStartItem->getPositionY());
-//    log("btnBackSp pos: %f, %f", btnBackItem->getPosition().x, btnBackItem->getPositionY());
-//    log("menu pos: %f, %f", menu->getPositionX(), menu->getPositionY());
-//    log("menu AnchorPoint: %f, %f", menu->getAnchorPoint().x, menu->getAnchorPoint().y);
+
     this->addChild(menu);
     return true;
 }
@@ -79,12 +84,16 @@ void LevelInfoScene::menuStartCallBack(cocos2d::Ref *pSender)
     SimpleAudioEngine::getInstance()->playEffect("sound/button.wav");
     
     //Load level info
-    std::string fileName = UserDefault::getInstance()->getStringForKey("levelfile");
+    std::string fileName = UserDefault::getInstance()->getStringForKey("levelFile");
+    //log("load info file: %s",fileName.c_str());
+    
     auto loadInfo = LoadInfo::createWithFile(fileName);
     loadInfo->readInfo();
     
     //transition Scene
-    transitionScene();
+    auto playScene = PlayScene::createScene();
+    auto transitionFade = TransitionFade::create(0.2f, playScene);
+    Director::getInstance()->replaceScene(transitionFade);
 }
 
 void LevelInfoScene::menuBackCallBack(cocos2d::Ref *pSender)
@@ -95,7 +104,4 @@ void LevelInfoScene::menuBackCallBack(cocos2d::Ref *pSender)
     Director::getInstance()->replaceScene(transitionFadeTR);
 }
 
-void LevelInfoScene::transitionScene()
-{
-    
-}
+

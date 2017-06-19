@@ -25,7 +25,7 @@ public:
     void menuStartCallBack(cocos2d::Ref *pSender);
     void menuBackCallBack(cocos2d::Ref *pSender);
     
-    void transitionScene();
+    
 };
 
 #endif /* LevelInfoScene_hpp */

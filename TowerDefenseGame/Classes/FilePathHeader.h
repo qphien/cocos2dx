@@ -14,7 +14,24 @@
 #define buttonMusicEffect "sound/button.wav"
 #define bulletShootMusicEffect "sound/shoot.wav"
 #define backMusicEffect "sound/comeout.wav"
+#define fontsPath "fonts/bitmapFontChinese.fnt"
 #define tipMusicEffect "sound/tip.wav"
 
+#define PI 3.1415927
+
+enum TOWERTYPE
+{
+    ARROW_TOWER,
+    ATTACK_TOWER,
+    MULTIIDR_TOWER,
+    OTHER
+};
+
+//enum EnemyType
+//{
+//    THIEF,
+//    PIRATE,
+//    BANDIT
+//};
 
 #endif /* Header_h */
